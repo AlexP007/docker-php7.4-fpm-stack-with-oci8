@@ -53,9 +53,16 @@ services:
     networks:
       - project
 
+  composer:
+    build:
+      context: ./composer
+      dockerfile: Dockerfile
+    volumes:
+      - ${PROJECT_DIR}:/var/www/project
+
   node:
     build:
       context: ./node
       dockerfile: Dockerfile
     volumes:
-      - ${SITE_PATH}:/var/www/project
+      - ${PROJECT_DIR}:/var/www/project
