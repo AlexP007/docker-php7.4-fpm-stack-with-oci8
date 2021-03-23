@@ -1,0 +1,61 @@
+version: '3.6'
+
+networks:
+  project:
+    driver: host
+
+services:
+
+  db:
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - ./shared/logs/mysql:/var/log/mysql
+      - ./shared/data/mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    networks:
+      - project
+
+  php:
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - "9000:9000"
+    volumes:
+      - ${PROJECT_DIR}:/var/www/project
+      - ./sahred/logs/php:/var/log/php/
+    networks:
+      - project
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - ${PROJECT_DIR}:/var/www/project
+      - ./shared/logs/nginx:/var/log/nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - project
+
+  node:
+    build:
+      context: ./node
+      dockerfile: Dockerfile
+    volumes:
+      - ${SITE_PATH}:/var/www/project

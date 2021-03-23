@@ -31,6 +31,6 @@ ADD ./php/fpm.conf /usr/local/etc/pool.d/fpm_custom.conf
 
 RUN usermod -u 1000 www-data
 
-WORKDIR "/var/www/site"
+WORKDIR /var/www/project
 
 EXPOSE 9000
