@@ -1,0 +1,8 @@
+# Local path to project dir
+PROJECT_DIR=shared/project
+
+# Mysql
+MYSQL_DATABASE=local
+MYSQL_USER=user
+MYSQL_PASSWORD=password
+MYSQL_ROOT_PASSWORD=root
