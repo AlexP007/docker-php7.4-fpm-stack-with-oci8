@@ -1,19 +1,18 @@
-FROM nginx:1.17
+FROM nginx:1.18
 
 MAINTAINER AlexP007
 
-ADD conf/nginx.conf /etc/nginx/
+ADD nginx.conf /etc/nginx/
+ADD upstream.conf /etc/nginx/conf.d/
 
 # comment undrelying line if use bitrix
-ADD conf/default.conf /etc/nginx/conf.d/
+ADD default.conf /etc/nginx/conf.d/
 
 # uncomment undrelying line if use bitrix
-# ADD conf/bitrix.conf /etc/nginx/conf.d/
-
-ADD conf/upstream.conf /etc/nginx/conf.d/
+# ADD bitrix.conf /etc/nginx/conf.d/
 
 RUN usermod -u 1000 www-data
 
-CMD ["nginx"]
+CMD ["nginx", "-g", "daemon off;"]
 
 EXPOSE 80 443

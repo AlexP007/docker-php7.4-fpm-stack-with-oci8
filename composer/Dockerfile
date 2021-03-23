@@ -1,5 +1,5 @@
 FROM composer:2.0.7
 
-WORKDIR /var/www/project
+MAINTAINER AlexP007
 
-RUN composer install
+WORKDIR /var/www/project
