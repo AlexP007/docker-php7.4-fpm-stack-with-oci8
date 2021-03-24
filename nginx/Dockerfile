@@ -9,7 +9,7 @@ ADD upstream.conf /etc/nginx/conf.d/
 ADD default.conf /etc/nginx/conf.d/
 
 # uncomment undrelying line if use bitrix
-# ADD bitrix.conf /etc/nginx/conf.d/
+# ADD bitrix.conf /etc/nginx/conf.d/default.conf
 
 RUN usermod -u 1000 www-data
 
