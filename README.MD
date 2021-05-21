@@ -60,6 +60,11 @@ If the environment will be used for Bitrix development, you need to change lines
 
 If you need to build php with oci8, then you need to uncomment the section from line 10 in php / Dockerfile.
 
+### COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2021 by Alexander Panteleev under MIT License.
+
+
 ## Russian
 
 Докер среда для разработки php-приложения. 
@@ -113,3 +118,8 @@ host: mysql.
 ### OCI8
 
 Если сборка php нужна с oci8, то нужно раскоментировать в php/Dockerfile секцию с 10 строки.
+
+### АВТОРСКИЕ ПРАВА И ЛИЦЕНЗИЯ
+
+Это программное обеспечение защищено авторскими правами (c) 2021 Александра Пантелеева по лицензии MIT.
+
